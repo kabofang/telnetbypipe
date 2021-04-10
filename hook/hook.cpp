@@ -3,7 +3,7 @@
 #include<stdio.h>
 #include"hookdll.h"
 #define READ_BUF_NUM 1024
-#define WAIT_PROC_TIMEMS 1000
+#define WAIT_PROC_TIMEMS 1001
 
 
 BOOL hooked = false;
