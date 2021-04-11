@@ -1,7 +1,7 @@
 #include"injectdll.h"
 BOOL APIENTRY DllMain(HMODULE hModule,
-	DWORD reason,
-	PVOID reserved)
+						DWORD reason,
+						PVOID reserved)
 {
 	switch (reason) {
 	case DLL_PROCESS_ATTACH:

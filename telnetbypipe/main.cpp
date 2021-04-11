@@ -6,7 +6,7 @@
 #define TIMEMS_FOR_PROC 200
 
 int main(int argc, char* argv[]) {
-	//********************       Prepare     **************************	
+	//********************       Prepare      **************************	
 	const char* InjectDllName = "inject.dll";
 	const char* InjectFuncName = "Inject";
 	const char* HookDllName = "hook.dll";
