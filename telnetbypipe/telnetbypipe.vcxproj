@@ -146,6 +146,9 @@
   <ItemGroup>
     <ClInclude Include="Initfunc.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="LAX.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
