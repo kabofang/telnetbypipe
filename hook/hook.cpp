@@ -12,6 +12,24 @@ HANDLE OldStdOutputfile;
 HANDLE NewStdInputfile;
 HANDLE NewStdOutputfile;
 
+DETOUR_TRAMPOLINE(BOOL WINAPI Trampoline_WriteConsoleA(HANDLE hConsoleOutput,
+	CONST VOID* lpBuffer,
+	DWORD nNumberOfCharsToWrite,
+	LPDWORD lpNumberOfCharsWritten,
+	LPVOID lpReserved),
+	WriteConsoleA);
+static BOOL WINAPI Detour_WriteConsoleA(HANDLE hConsoleOutput,
+	CONST VOID* lpBuffer,
+	DWORD nNumberOfCharsToWrite,
+	LPDWORD lpNumberOfCharsWritten,
+	LPVOID lpReserved)
+{
+	DWORD num;
+	WriteFile(OldStdOutputfile, lpBuffer, nNumberOfCharsToWrite, &num, NULL);
+	//Trampoline_WriteConsoleA(hConsoleOutput, lpBuffer, nNumberOfCharsToWrite, lpNumberOfCharsWritten, lpReserved);
+	return true;
+}
+
 DETOUR_TRAMPOLINE(BOOL WINAPI Trampoline_WriteConsoleW(HANDLE hConsoleOutput,
 	CONST VOID* lpBuffer,	
 	DWORD nNumberOfCharsToWrite,	
@@ -99,6 +117,7 @@ void Hook() {
 		return;
 	hooked = true;
 	HookInit();
+	DetourFunctionWithTrampoline((PBYTE)Trampoline_WriteConsoleA, (PBYTE)Detour_WriteConsoleA);
 	DetourFunctionWithTrampoline((PBYTE)Trampoline_WriteConsoleW, (PBYTE)Detour_WriteConsoleW);
 	return;
 }

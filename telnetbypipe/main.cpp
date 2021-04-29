@@ -9,7 +9,7 @@ int main(int argc, char* argv[]) {
 	//********************       Prepare      **************************	
 	const char* InjectDllName = "inject.dll";
 	const char* InjectFuncName = "Inject";
-	const char* HookDllName = "hook.dll";
+	const char* HookDllName = "..\\Debug\\hook.dll";
 	PROCESS_INFORMATION TelnetInfo;
 	HMODULE DllInject;
 	HANDLE PipeForTelnetIn, PipeForTelnetOut, PipeForUserIn, PipeForUserOut;
