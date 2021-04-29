@@ -99,7 +99,6 @@ void Hook() {
 		return;
 	hooked = true;
 	HookInit();
-	DetourFunctionWithTrampoline((PBYTE)Trampoline_WriteConsoleA, (PBYTE)Detour_WriteConsoleA);
 	DetourFunctionWithTrampoline((PBYTE)Trampoline_WriteConsoleW, (PBYTE)Detour_WriteConsoleW);
 	return;
 }
